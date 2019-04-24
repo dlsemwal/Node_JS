@@ -1,0 +1,7 @@
+1. Create JSON file - data.json
+2. Read JSON File
+	Add/Modify property - reqUrl (Array) - request url
+	Add/Modify property - reqCount (Number) - increment of request
+3. Write JSON file - data.json
+4. Send Response
+	- writeBody - latest data of data.json
