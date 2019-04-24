@@ -1,3 +1,7 @@
+var employees = []
+
+
+
 var http = require("http")
 
 
@@ -28,10 +32,36 @@ http.createServer( function(request, response) {
 	
 	if (pathname === '/employees' ) {
 		console.log(request.method)
+		if (request.method != 'GET' && request.method != 'POST') {
+			var errObj = {status:"Error", message:"This request can't be served"}
+			response.writeHead(404, {"Content-Type": "application/json"})
+			response.write(JSON.stringify(errObj))
+			response.end()
+		}
+		
+		
+		if (request.method == 'POST') {
+			var employee = {name:"Divyanshu Semmwal", contact:8077149430}
+			employees.push(employee)
+			
+			response.writeHead(200, {'Content-Type':'application/json'})
+			response.write(JSON.stringify(employee))
+			response.end()
+		}
+		if (request.method == 'GET') {
+			
+			
+			response.writeHead(200, {'Content-Type':'application/json'})
+			response.write(JSON.stringify(employees))
+			response.end()
+			
+			response
+		}
 	}
 	else {
 		// response.writeHead() method write head for response
-		response.writeHead(404, {)
+		response.writeHead(404, {"Content-Type" : "text/html"})
+		response.end()
 	}
 	
 }).listen(3000)
