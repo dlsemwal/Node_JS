@@ -1,0 +1,46 @@
+<h1>View Task List</h1>
+
+<nav>
+	<a href='index.html'>Add Task</a>
+	<a href='view.html'>View Task</a>
+	
+</nav>
+
+<table>
+	<tr>
+		<td>Sr.No.</td>
+		<td>Task Name</td>
+		<td>Status</td>
+		<td>Manage</td>
+	</tr>
+	<tbody id = "tbody"></tbody>
+</table>
+<script>
+	var ajaxRequest = new XMLHttpRequest()
+	ajaxRequest.onreadystatechange = function () {
+	
+		if (this.readyState == 4 && this.status == 200 ) {
+		var data = JSON.parse(this.responseText)
+		
+			console.log(data)
+			var row = ""
+			for (i in data) {
+				row += `
+				<tr>
+					<td>${data[i].id}</td>	
+					<td>${data[i].taskname}</td>
+					<td>Active</td>
+					<td>
+						<button>View</button>
+						<button>Update</button>
+						<button>Delete</button>
+					</td>
+				</tr>`
+			}
+			document.getElementById('tbody').innerHTML = row
+		}
+	}
+	ajaxRequest.open("GET", "http://localhost:8080/task-list", true)
+	ajaxRequest.send()
+</script>
+

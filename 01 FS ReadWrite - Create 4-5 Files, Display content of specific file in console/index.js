@@ -1,5 +1,11 @@
 var fileSys = require("fs");
-var insertedText = "This file is created by Divyanshu Semwal"
+var insertedText = " This file is created by Divyanshu Semwal"
+
+
+function clBack(err, data) {
+	if(err) return console.log(err)
+	console.log(data.toString())
+}
 
 
 
@@ -10,20 +16,14 @@ fileSys.readFile("myFile1.txt", function(err, data) {
 	insertedText = insertedText + data.toString()
 })
 
-fileSys.readFile("myFile2.txt", function(err, data) {
-	if(err) return console.log(err)
-	console.log(data.toString())
-})
+fileSys.readFile("myFile2.txt", clBack )
 
 fileSys.readFile("myFile3.txt", function(err, data) {
 	if(err) return console.log(err)
 	console.log(data.toString())
 })
 
-fileSys.readFile("myFile4.txt", function(err, data) {
-	if(err) return console.log(err)
-	console.log(data.toString())
-})
+fileSys.readFile("myFile4.txt", clBack)
 
 fileSys.readFile("myFile5.txt", function(err, data) {
 	if(err) return console.log(err)

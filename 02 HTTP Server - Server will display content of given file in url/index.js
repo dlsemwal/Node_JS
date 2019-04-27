@@ -19,6 +19,10 @@ http.createServer(callBack Function).listen(portNo.)
 	request is an object of request of client and 
 		response is an object of response created by server
  */ 
+ console.log(http.createServer)
+ 
+ 
+ 
 http.createServer( function(request, response) {
 	// url is a module is used to get various information and perform operation in a url
 	
@@ -65,4 +69,5 @@ http.createServer( function(request, response) {
 	}
 	
 }).listen(3000)
+
   
